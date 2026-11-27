@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 import type { I18nRuntimeConfig } from '@/types/i18n';
@@ -10,6 +10,14 @@ interface LocaleProviderProps {
   children: ReactNode;
 }
 
+const DefaultLocaleContext = createContext('en');
+
+// Use the configured default for SSR and the first hydration render.
+export function useCurrentLocale() {
+  const defaultLocale = useContext(DefaultLocaleContext);
+  return useLocaleStore((state) => state.isReady ? state.locale : defaultLocale);
+}
+
 export function LocaleProvider({ config, children }: LocaleProviderProps) {
   const initialize = useLocaleStore((state) => state.initialize);
 
@@ -17,5 +25,5 @@ export function LocaleProvider({ config, children }: LocaleProviderProps) {
     initialize(config);
   }, [initialize, config]);
 
-  return <>{children}</>;
+  return <DefaultLocaleContext.Provider value={config.defaultLocale}>{children}</DefaultLocaleContext.Provider>;
 }

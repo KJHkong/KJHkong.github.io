@@ -2,6 +2,10 @@
 
 This guide is designed for beginners. You don't need complex configurations to deploy your website.
 
+This project now deploys automatically on pushes to `main`. The recommended GitHub Actions workflow builds the source and publishes `out/`; manual uploads are unnecessary. An account homepage domain must match the GitHub username: `username` corresponds to `https://username.github.io/`.
+
+This site uses `KJHkong/KJHkong.github.io` at <https://kjhkong.github.io/>. The local `origin` remote is the personal website repository; `upstream` preserves the original PRISM template repository.
+
 ## Option 1: GitHub Pages
 
 1.  **Build your project**
@@ -45,7 +49,7 @@ This guide is designed for beginners. You don't need complex configurations to d
 6.  **Done!**
     Visit `https://username.github.io` to see your website.
 
-### (Optional) Deploy Automatically with GitHub Actions
+### (Recommended) Deploy Automatically with GitHub Actions
 
 PRISM also supports **automatic deployment to GitHub Pages** using GitHub Actions.  
 This method is recommended if you want your site to update automatically whenever you push changes.
@@ -58,31 +62,39 @@ This repository includes an optional workflow located at:
 .github/workflows/deploy.yml
 ```
 
-For template users, GitHub disables workflows by default.  
-To enable deployment:
+The workflow already runs on pushes to `main` and supports manual runs. For the first deployment:
 
 1. Go to **Settings > Pages**, and under **Build and deployment > Source**, choose **GitHub Actions**.
-2. Go to **Actions** Tab, and select **"Deploy PRISM to GitHub Pages"**.
-3. Click **"Enable workflow"**.
-4. Run manually using **Run workflow**.
-5. (Optional) To enable automatic deployment on push:  
-   Edit `.github/workflows/deploy.yml` and uncomment:
-
-   ```yaml
-   on:
-     push:
-       branches:
-         - main
-         - ci
-   ```
+2. Check `git remote -v` and verify that your push target is your own repository. If `origin` still points to `xyjoey/PRISM`, preserve it as `upstream` and add your own repository as `origin`.
+3. Commit and push the project source to your repository's `main` branch. Keep the license and template attribution. Generated directories and local QA files should remain ignored.
+4. Go to **Actions** and select **"Deploy academic homepage to GitHub Pages"** to inspect the deployment. Use **Run workflow** for a manual run if needed.
 
 Once enabled, GitHub Actions will:
 
-- Build your site (`npm install && npm run build`)
+- Install locked dependencies with Node.js 24 and `npm ci`
+- Verify bilingual content, build the site, and check all six pages, the portrait, and the CV PDF
 - Export static files into `out/`
 - Deploy automatically to GitHub Pages
 
 Your site will be available at `https://<username>.github.io`
+
+#### Later updates
+
+Edit this same checkout and preview with `npm run dev -- --hostname 127.0.0.1 --port 3000`. Localized content lives in `content_zh/` and `content/`; static assets and the CV live in `public/`.
+
+After reviewing changes, stop the development server and run:
+
+```powershell
+node scripts/verify-content.cjs
+npm run build
+git status
+git diff
+git add -A
+git commit -m "Update academic homepage"
+git push origin main
+```
+
+Each push automatically builds and updates the live site. Local edits do not change the live version before they are committed and pushed. The published site does not require your computer or port forwarding to remain running.
 
 If you are using a repository other than `username.github.io`, your site will be at `https://<username>.github.io/<repository>/`.
 

@@ -2,3 +2,5 @@ type = "publication"
 title = "论文"
 description = "我的研究成果列表。"
 source = "publications.bib"
+order = ["layerrecall", "gsa-yolo", "citevqa", "tailprop"]
+group_by_status = false

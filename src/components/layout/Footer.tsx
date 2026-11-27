@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocaleStore } from '@/lib/stores/localeStore';
+import { useCurrentLocale } from '@/components/ui/LocaleProvider';
 import { useMessages } from '@/lib/i18n/useMessages';
 
 interface FooterProps {
@@ -10,7 +10,7 @@ interface FooterProps {
 }
 
 export default function Footer({ lastUpdated, lastUpdatedByLocale, defaultLocale = 'en' }: FooterProps) {
-  const locale = useLocaleStore((state) => state.locale);
+  const locale = useCurrentLocale();
   const messages = useMessages();
 
   const resolvedLastUpdated =

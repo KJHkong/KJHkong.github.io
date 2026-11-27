@@ -9,8 +9,8 @@ import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 import type { SiteConfig } from '@/lib/config';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const config = getConfig();
-  const runtimeI18n = getRuntimeI18nConfig(config.i18n);
+  const runtimeI18n = getRuntimeI18nConfig(getConfig().i18n);
+  const config = getConfig(runtimeI18n.defaultLocale);
   const openGraphLocale = runtimeI18n.defaultLocale === 'zh' ? 'zh_CN' : 'en_US';
 
   return {
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${config.site.title}`,
     },
     description: config.site.description,
-    keywords: [config.author.name, 'PhD', 'Research', config.author.institution],
+    keywords: [config.author.name, 'Multimodal Learning', 'Post-Training', 'Generative Models', 'Agents', 'Reinforcement Learning', 'Decision Models', config.author.institution],
     authors: [{ name: config.author.name }],
     creator: config.author.name,
     publisher: config.author.name,
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: openGraphLocale,
       title: config.site.title,
       description: config.site.description,
-      siteName: `${config.author.name}'s Academic Website`,
+      siteName: `${config.author.name} | ${runtimeI18n.defaultLocale === 'zh' ? '个人学术主页' : 'Academic Homepage'}`,
     },
   };
 }

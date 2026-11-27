@@ -2,6 +2,10 @@
 
 这份指南专为初学者准备。别担心，你不需要懂复杂的服务器配置，只需要跟着下面的步骤，就能轻松把你的个人主页发布上线！
 
+本项目已配置“向 `main` 推送后自动部署”，推荐使用下文的 GitHub Actions 方式：上传项目源码，由 GitHub 构建并发布，不必手动上传 `out/`。个人主页根域名必须与 GitHub 账号名一致，例如账号 `username` 对应 `https://username.github.io/`。
+
+当前站点使用 `KJHkong/KJHkong.github.io` 仓库，访问地址为 <https://kjhkong.github.io/>。本地 `origin` 用于自己的站点仓库，`upstream` 保留 PRISM 原模板仓库。
+
 ## 方案一：GitHub Pages
 
 1.  **构建你的项目**
@@ -48,7 +52,7 @@
 6.  **大功告成！**
     访问 `https://你的用户名.github.io`，欣赏你的新网站吧！
 
-### (可选) 使用 GitHub Actions 自动部署
+### （推荐）使用 GitHub Actions 自动部署
 
 PRISM 也支持使用 GitHub Actions **自动部署到 GitHub Pages**。
 如果您希望每次推送更改时自动更新站点，推荐使用此方法。
@@ -61,31 +65,39 @@ PRISM 也支持使用 GitHub Actions **自动部署到 GitHub Pages**。
 .github/workflows/deploy.yml
 ```
 
-对于使用模板的用户，GitHub 默认会禁用工作流。
-要启用部署：
+工作流已启用 `main` 分支的推送触发，也保留了手动发布入口。首次部署：
 
 1. 转到 **Settings (设置) > Pages**，在 **Build and deployment (构建和部署) > Source (来源)** 下，选择 **GitHub Actions**。
-2. 转到 **Actions** 标签页，选择 **"Deploy PRISM to GitHub Pages"**。
-3. 点击 **"Enable workflow" (启用工作流)**。
-4. 使用 **Run workflow (运行工作流)** 手动运行。
-5. (可选) 要启用推送时自动部署：
-   编辑 `.github/workflows/deploy.yml` 并取消注释：
-
-   ```yaml
-   on:
-     push:
-       branches:
-         - main
-         - ci
-   ```
+2. 检查 `git remote -v`，确认推送地址属于你自己的站点仓库。若 `origin` 仍指向 `xyjoey/PRISM`，应将其保留为 `upstream`，再添加自己的 `origin`，不要把个人内容推送到模板仓库。
+3. 提交并推送当前项目源码到自己的仓库 `main` 分支；保留 `LICENSE` 与模板来源说明。不要提交 `node_modules/`、`.next/`、`out/` 或 `.qa/`。
+4. 转到 **Actions** 标签页，选择 **"Deploy academic homepage to GitHub Pages"**，查看发布结果。需要时可以使用 **Run workflow (运行工作流)** 手动运行。
 
 启用后，GitHub Actions 将会：
 
-- 构建您的站点 (`npm install && npm run build`)
+- 使用 Node.js 24 和 `npm ci` 安装锁定版本的依赖
+- 检查中英文内容，运行 `npm run build`，核对六个页面、头像和简历 PDF
 - 将静态文件导出到 `out/`
 - 自动部署到 GitHub Pages
 
 您的站点将可以通过 `https://<username>.github.io` 访问。
+
+#### 后续更新
+
+继续在本地修改项目，使用 `npm run dev -- --hostname 127.0.0.1 --port 3000` 预览。中文内容在 `content_zh/`，英文内容在 `content/`，图片和简历在 `public/`。
+
+确认效果后，先停止 dev 服务，再执行：
+
+```powershell
+node scripts/verify-content.cjs
+npm run build
+git status
+git diff
+git add -A
+git commit -m "Update academic homepage"
+git push origin main
+```
+
+每次推送后，GitHub Actions 都会自动构建并更新线上网站。本地修改在提交、推送前不会影响线上版本；线上网站也不需要本地电脑保持开机或开启端口转发。
 
 如果您使用的仓库名称不是 `username.github.io`，您的站点将位于 `https://<username>.github.io/<repository>/`。
 

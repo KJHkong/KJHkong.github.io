@@ -1,27 +1,43 @@
 type = "card"
 title = "奖项"
-description = "我获得的荣誉与奖项。"
+description = "我获得的学业荣誉与竞赛奖项。"
 
 [[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2025"
-content = "奖项说明。"
+id = "academic-honors"
+title = "学业荣誉"
+
+[[items.entries]]
+title = "2023-2024学年本科生国家奖学金"
+date = "2024.12"
+
+[[items.entries]]
+title = "2024-2025学年本科生国家奖学金"
+date = "2025.12"
+
+[[items.entries]]
+title = "山东大学优秀学生奖一等"
+date = "2024.11"
+
+[[items.entries]]
+title = "山东大学三好学生"
+date = "2025.11"
 
 [[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2024"
-content = "奖项说明。"
+id = "competition-awards"
+title = "竞赛奖项"
 
-[[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2023"
-content = "奖项说明。"
+[[items.entries]]
+title = "全国大学生电工数学建模竞赛 · 国家级一等奖"
+date = "2025.07"
 
-[[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2022"
-content = "奖项说明。"
+[[items.entries]]
+title = "世界机器人大赛锦标赛VEX赛项 · 国家级一等奖"
+date = "2021.09"
+
+[[items.entries]]
+title = "全国大学生数学竞赛 · 国家级二等奖"
+date = "2024.12"
+
+[[items.entries]]
+title = "蓝桥杯程序设计竞赛 · 国家级三等奖"
+date = "2026.05"

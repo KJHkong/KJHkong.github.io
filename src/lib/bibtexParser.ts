@@ -1,10 +1,13 @@
-import { Publication, PublicationType, ResearchArea } from '@/types/publication';
+import { Publication, PublicationStatus, PublicationType, ResearchArea } from '@/types/publication';
 import { getConfig } from './config';
 import { getRuntimeI18nConfig } from './i18n/config';
 import { parseBibTeXInline } from './bibtexInline';
+import { getBibtexContent } from './content';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const bibtexParse = require('bibtex-parse-js');
+
+interface BibtexEntry { entryType: string; citationKey: string; entryTags: Record<string, string> }
 
 // Map BibTeX entry types to our publication types
 const typeMapping: Record<string, PublicationType> = {
@@ -38,7 +41,9 @@ const monthMapping: Record<string, number> = {
 
 export function parseBibTeX(bibtexContent: string, locale?: string): Publication[] {
   const highlightNames = getHighlightNames(locale);
-  const entries = bibtexParse.toJSON(bibtexContent);
+  const entries: BibtexEntry[] = bibtexParse.toJSON(bibtexContent);
+  const sourceCitations: BibtexEntry[] = entries.some(entry => entry.entryTags.citation_key)
+    ? bibtexParse.toJSON(getBibtexContent('citations.bib')) : [];
 
   return entries.map((entry: { entryType: string; citationKey: string; entryTags: Record<string, string> }, index: number) => {
     const tags = entry.entryTags;
@@ -47,12 +52,16 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
     const authors = parseAuthors(tags.author || '', highlightNames);
 
     // Parse year and month
-    const year = parseInt(tags.year) || new Date().getFullYear();
+    const parsedYear = Number(tags.year);
+    const year = Number.isInteger(parsedYear) && parsedYear > 0 ? parsedYear : undefined;
     const monthStr = tags.month?.toLowerCase() || '';
     const month = monthMapping[monthStr] || (parseInt(monthStr) || undefined);
 
     // Determine type
-    const type = typeMapping[entry.entryType.toLowerCase()] || 'journal';
+    const type = tags.type_pending === 'true' ? 'unconfirmed' : (typeMapping[entry.entryType.toLowerCase()] || 'preprint');
+    const statuses: PublicationStatus[] = ['published', 'accepted', 'under-review', 'submitted', 'in-preparation', 'draft'];
+    const status = statuses.includes(tags.status as PublicationStatus) ? tags.status as PublicationStatus : 'draft';
+    const authorPositions = ['first', 'co-first', 'second', 'third', 'fifth'];
 
     // Parse tags/keywords
     const keywords = tags.keywords?.split(',').map((k: string) => k.trim()) || [];
@@ -63,6 +72,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
     // Parse preview field (remove braces if present)
     const preview = tags.preview?.replace(/[{}]/g, '');
     const title = parseBibTeXInline(tags.title || 'Untitled');
+    const sourceCitation = sourceCitations.find(citation => citation.citationKey === tags.citation_key);
 
     // Create publication object
     const publication: Publication = {
@@ -73,7 +83,10 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       year,
       month: monthMapping[tags.month?.toLowerCase()] ? String(month) : tags.month,
       type,
-      status: 'published',
+      status,
+      placeholder: tags.placeholder === 'true',
+      authorPosition: authorPositions.includes(tags.author_position) ? tags.author_position as Publication['authorPosition'] : undefined,
+      selectedOrder: tags.selected_order && Number.isFinite(Number(tags.selected_order)) ? Number(tags.selected_order) : undefined,
       tags: keywords,
       keywords,
       researchArea: detectResearchArea(tags.title, keywords),
@@ -87,13 +100,21 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       doi: tags.doi,
       url: tags.url,
       code: tags.code,
+      pdfUrl: tags.pdf || tags.pdfurl,
+      projectPage: tags.project || tags.project_url,
+      huggingFace: tags.hugging_face,
+      demo: tags.demo,
+      venue: cleanBibTeXString(tags.venue),
       abstract: cleanBibTeXString(tags.abstract),
+      summary: cleanBibTeXString(tags.abstract_excerpt),
       description: cleanBibTeXString(tags.description || tags.note),
       selected,
       preview,
+      additionalPreviews: tags.preview_additional?.split(',').map(path => path.trim().replace(/[{}]/g, '')).filter(Boolean),
+      previewFit: tags.preview_fit === 'fill' ? 'fill' : undefined,
 
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code']),
+      bibtex: sourceCitation ? reconstructBibTeX(sourceCitation) : tags.placeholder === 'true' ? undefined : reconstructBibTeX(entry, ['selected', 'selected_order', 'abstract_excerpt', 'preview', 'preview_additional', 'preview_fit', 'description', 'keywords', 'code', 'status', 'author_position', 'placeholder', 'type_pending', 'pdf', 'pdfurl', 'project', 'project_url', 'venue', 'citation_key', 'hugging_face', 'demo']),
     };
 
     // Clean up undefined fields
@@ -106,7 +127,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
     return publication;
   }).sort((a: Publication, b: Publication) => {
     // Sort by year (descending), then by month if available
-    if (b.year !== a.year) return b.year - a.year;
+    if (b.year !== a.year) return (b.year || 0) - (a.year || 0);
 
     // For month comparison, treat missing months as January (1) to ensure they appear last within the year
     const monthA = typeof a.month === 'string' ?

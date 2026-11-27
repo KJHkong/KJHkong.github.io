@@ -1,0 +1,72 @@
+type = "card"
+title = "Internships"
+description = "My internship experience."
+compact_projects = true
+
+[[items]]
+id = "netease"
+title = "NetEase Intelligence Enterprise Division"
+subtitle = "Artificial Intelligence Algorithm Intern"
+date = "2026.10 — Present"
+
+[[items.projects]]
+id = "deepfake-redteam"
+title = "DeepFake Red Team Attacker"
+content = "Built stateful LangGraph face-swapping and editing workflows with business Source–Target pools, Reference Bank and CLIP Top-K pairing, plus MMD distribution analysis. Integrated generators, static LivePortrait editing and dual face-admission checks; validity and Detector feedback selected ~**6,000** samples for fine-tuning, improving business Fake detection by **2.8%**, with an interactive demo."
+content_variants = ["Built LangGraph workflows for face swapping and conditioned editing with CLIP-based Source–Target pairing, a Reference Bank, MMD analysis and detector-guided screening. Generated ~**6,000** samples for fine-tuning, improving Fake detection by **2.8%** on business test data, and built an interactive demo.", "Built LangGraph swapping and editing with CLIP pairing, Reference Bank, MMD and admission checks. Detector-guided screening produced ~**6,000** fine-tuning samples, improving business Fake detection by **2.8%**, with a web demo."]
+compact_content = "Built LangGraph/CLIP workflows; ~**6,000** generated samples improved Fake detection by **2.8%** after fine-tuning."
+tags = ["LangGraph", "CLIP Retrieval", "Reference Bank", "Conditioned Face Editing", "Detector Evaluation"]
+resources = [
+  { kind = "code", href = "https://github.com/KJHkong/DeepFake-Red-Team-Attacker" },
+  { kind = "demo", href = "https://deepfake-redteam-showcase.pages.dev/" }
+]
+
+[[items.projects]]
+id = "deepfake-detection"
+title = "DeepTrace"
+ongoing = true
+content = "Developing explainable DeepFake detection through Effort, CLIP ViT-L/14 + SVD, domain VLMs and FakeShield / TCM + SAM localization. Using attention differences and cross-branch evidence to audit conflicts; Source–Target pairs and image-quality differences provide weak supervision. Advancing DeepSeek-assisted annotation, human checks and LoRA / QLoRA SFT, with joint detection, localization and faithfulness evaluation."
+content_variants = ["Developing explainable DeepFake detection with CLIP ViT-L/14 + SVD, domain VLMs and TCM + SAM evidence localization. Reusing Source–Target pairs for weak supervision, DeepSeek-assisted annotation and LoRA / QLoRA SFT, with joint evaluation of detection, localization and explanation faithfulness.", "Developing CLIP+SVD, domain VLM and TCM+SAM evidence localization with cross-branch verification. Using Source–Target weak supervision, assisted annotation and LoRA/QLoRA SFT to evaluate detection and explanation faithfulness."]
+compact_content = "Developing CLIP+SVD and TCM+SAM evidence localization with weak supervision and LoRA/QLoRA."
+tags = ["CLIP ViT-L/14 + SVD", "TCM + SAM", "Source–Target Weak Supervision", "LoRA / QLoRA", "Evidence Localization"]
+
+[[items.projects]]
+id = "deepfake-decision"
+title = "DeepFake Decision Model"
+ongoing = true
+content = "Adapting Intern-Decision 2B / 4B for multimodal DeepFake decisions through structured business data, Decision SFT and classification evaluation. Planned comparisons cover general VLMs, domain VLMs and visual detectors under cross-dataset and cross-generator OOD settings. Further work explores structured BBox output and joint localization using Red Team Source–Target pairs and image-quality differences."
+content_variants = ["Adapting Intern-Decision 2B / 4B via structured decision data and Decision SFT. Planned work compares general VLMs, domain VLMs and visual detectors under cross-dataset and cross-generator OOD evaluation, then explores BBox output and joint localization using Source–Target weak supervision.", "Adapting Intern-Decision 2B/4B through structured data, Decision SFT and classification evaluation. Planning VLM/detector comparisons, OOD generalization and BBox output using Source–Target weak supervision."]
+compact_content = "Adapting Intern-Decision 2B/4B with Decision SFT; OOD evaluation and BBox localization are planned."
+tags = ["Decision Model", "Post Training (SFT/DPO)", "TP, FSDP", "OOD Evaluation", "BBox Localization"]
+
+[[items]]
+id = "shanghai-ai-lab"
+title = "Shanghai Artificial Intelligence Laboratory"
+subtitle = "Multimodal Large Language Model Algorithm Intern"
+date = "2026.03 — 2026.06"
+
+[[items.projects]]
+id = "mineru"
+title = "MinerU2.5-Pro"
+content = "Supported DDAS diversity/difficulty sampling, CMCV consistency checks and Judge-and-Refine curation for **3.9M Hard-sample SFT / 192K GRPO** samples. Ran MinerU-SWIFT SFT→GRPO experiments and Rollout analysis, using MGAM for layout-granularity mismatches and IoU / Edit Distance / CDM / TEDS for multi-task reward design. OmniDocBench v1.6 Full: **95.69**, **+2.71** over the same-architecture baseline."
+content_variants = ["Supported DDAS / CMCV and Judge-and-Refine curation for **3.9M Hard-sample SFT / 192K GRPO** samples. Ran MinerU-SWIFT SFT→GRPO experiments, Rollout analysis, MGAM matching and IoU / Edit Distance / CDM / TEDS reward design. OmniDocBench v1.6 Full: **95.69**, **+2.71** over the same-architecture baseline.", "Supported DDAS/CMCV curation for **3.9M SFT / 192K GRPO** samples, plus MinerU-SWIFT training, Rollout analysis, MGAM and multi-task rewards. OmniDocBench v1.6 Full: **95.69**, up **2.71** points.", "Supported **3.9M SFT / 192K GRPO** samples through data curation and post-training. OmniDocBench v1.6 Full reached **95.69**, improving by **2.71** points."]
+compact_content = "Supported **3.9M SFT / 192K GRPO** samples; OmniDocBench v1.6 Full: **95.69**, up **2.71** points."
+tags = ["MS-SWIFT", "Post Training (SFT / GRPO)", "DDAS / CMCV", "MGAM", "OmniDocBench"]
+resources = [
+  { kind = "pdf", href = "https://arxiv.org/pdf/2604.04771" },
+  { kind = "code", href = "https://github.com/opendatalab/MinerU" },
+  { kind = "huggingFace", href = "https://huggingface.co/opendatalab/MinerU2.5-Pro-2604-1.2B" }
+]
+
+[[items.projects]]
+id = "citevqa"
+title = "CiteVQA"
+content = "Built cross-document semantic retrieval, evidence extraction and template-distilled QA with answerability, closed-book and BBox-masking checks. Teacher tool trajectories and BBox IoU rejection sampling yielded **3K** SFT samples matching **5K** labeled samples on FinRAGBench-V / ViDoRe V3. Built a **711-PDF / 1,897-QA** benchmark; SAA and fine-grained LLM-as-Judge evaluation of **20** MLLMs exposed evidence-attribution hallucinations."
+content_variants = ["Built cross-document QA and evidence-quality pipelines. Trajectory distillation and BBox IoU rejection sampling yielded **3K** synthetic samples matching **5K** labeled samples on FinRAGBench-V / ViDoRe V3. Built a **711-PDF / 1,897-QA** benchmark; SAA evaluation of **20** MLLMs exposed evidence-attribution hallucinations.", "Built cross-document QA and evidence-quality pipelines with tool-trajectory distillation and BBox IoU sampling. **3K** synthetic samples matched **5K** labeled samples; a **711-PDF / 1,897-QA** benchmark audited **20** MLLMs with SAA."]
+compact_content = "Built QA pipelines and a **711-PDF / 1,897-QA** benchmark; SAA evaluation of **20** MLLMs exposed citation errors."
+tags = ["Agentic Data Pipeline", "Dense Retrieval", "Evidence Grounding", "Trajectory Distillation", "LLM-as-Judge"]
+resources = [
+  { kind = "pdf", href = "https://arxiv.org/pdf/2605.12882" },
+  { kind = "code", href = "https://github.com/opendatalab/CiteVQA" },
+  { kind = "details", href = "/publications#citevqa" }
+]

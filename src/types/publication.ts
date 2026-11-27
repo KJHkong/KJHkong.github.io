@@ -27,7 +27,7 @@ export interface Publication {
   volume?: string;
   issue?: string;
   pages?: string;
-  year: number;
+  year?: number;
   month?: string;
   publishedDate?: string;
   doi?: string;
@@ -36,6 +36,12 @@ export interface Publication {
   url?: string;
   code?: string;
   pdfUrl?: string;
+  projectPage?: string;
+  huggingFace?: string;
+  demo?: string;
+  placeholder?: boolean;
+  authorPosition?: 'first' | 'co-first' | 'second' | 'third' | 'fifth';
+  selectedOrder?: number;
   tags: string[];
   keywords?: string[];
   type: PublicationType;
@@ -50,12 +56,15 @@ export interface Publication {
   featured?: boolean;
   selected?: boolean;
   preview?: string;
+  additionalPreviews?: string[];
+  previewFit?: 'contain' | 'fill';
   summary?: string;
   researchArea: ResearchArea;
   description?: string;
 }
 
 export type PublicationType =
+  | 'unconfirmed'
   | 'journal'
   | 'conference'
   | 'workshop'

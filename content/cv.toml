@@ -1,3 +1,11 @@
 type = "text"
 title = "CV"
+description = "Read my curriculum vitae below or download the PDF."
 source = "cv.md"
+
+[pdf]
+path = "/files/CV.pdf"
+
+[notice]
+title = "CV needs updating"
+content = "The download and text below are based on an older CV. Experience, publication details, and author positions need updating."

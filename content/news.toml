@@ -1,7 +1,33 @@
 [[news]]
-date = "2025-11"
-content = "Our work has been accepted by a prestigious journal 🎉"
+date = "2026-12"
+content = "Our paper on multimodal understanding and evaluation was accepted to ICLR 2027! 🎉"
+highlight = true
 
 [[news]]
-date = "2025-09"
-content = "Starting my PhD at the University of Example"
+date = "2026-11"
+content = "Our paper on video generation was accepted to AAAI 2027! 🎉"
+highlight = true
+
+[[news]]
+date = "2026-10"
+content = "Joined NetEase's Intelligence Enterprise Division as an AI Algorithm Intern."
+
+[[news]]
+date = "2026-09"
+content = "Admitted through recommendation to the professional master's program in Big Data at the School of Mathematical Sciences, Peking University! 🎉"
+
+[[news]]
+date = "2026-06"
+content = "Joined Zhejiang University's DCD Lab as a research assistant, advised by Yi Yang (IEEE Fellow)."
+
+[[news]]
+date = "2026-05"
+content = "My first-author paper was formally accepted by Scientific Reports! 🎉"
+
+[[news]]
+date = "2026-03"
+content = "Joined the Data Platform Center of Shanghai Artificial Intelligence Laboratory as a Multimodal Large Model Algorithm Intern."
+
+[[news]]
+date = "2026-01"
+content = "Joined Shanghai Jiao Tong University's Catalysis & AI Lab as a research assistant, advised by Yulian He."

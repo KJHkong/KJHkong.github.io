@@ -1,9 +1,9 @@
 'use client';
 
 import { getMessages } from '@/lib/i18n/messages';
-import { useLocaleStore } from '@/lib/stores/localeStore';
+import { useCurrentLocale } from '@/components/ui/LocaleProvider';
 
 export function useMessages() {
-  const locale = useLocaleStore((state) => state.locale);
+  const locale = useCurrentLocale();
   return getMessages(locale);
 }

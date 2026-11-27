@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'smol-toml';
+import type { TextPageConfig } from '@/types/page';
 
 const DEFAULT_CONTENT_DIR = 'content';
 
@@ -47,7 +48,19 @@ export function getMarkdownContent(filename: string, locale?: string): string {
 }
 
 export function getBibtexContent(filename: string, locale?: string): string {
+  // One canonical bibliography feeds the homepage and both languages.
+  if (filename === 'publications.bib' || filename === 'citations.bib') return readFirstAvailableFile(filename);
   return readFirstAvailableFile(filename, locale);
+}
+
+export function resolveTextPageConfig(config: TextPageConfig): TextPageConfig {
+  if (!config.pdf) return config;
+  const publicRoot = path.resolve(process.cwd(), 'public');
+  const filePath = path.resolve(publicRoot, config.pdf.path.replace(/^\/+/, ''));
+  const relative = path.relative(publicRoot, filePath);
+  const isLocal = config.pdf.path.startsWith('/') && !relative.startsWith('..') && !path.isAbsolute(relative);
+  const available = isLocal && fs.existsSync(filePath) && fs.statSync(filePath).isFile();
+  return { ...config, pdf: { ...config.pdf, available } };
 }
 
 export function getTomlContent<T>(filename: string, locale?: string): T | null {

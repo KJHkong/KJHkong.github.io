@@ -1,5 +1,5 @@
 import { getConfig } from '@/lib/config';
-import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
+import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig, resolveTextPageConfig } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
 import { Publication } from '@/types/publication';
@@ -8,7 +8,7 @@ import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 
 interface SectionConfig {
   id: string;
-  type: 'markdown' | 'publications' | 'list';
+  type: 'markdown' | 'publications' | 'list' | 'cards';
   title?: string;
   source?: string;
   filter?: string;
@@ -16,11 +16,13 @@ interface SectionConfig {
   content?: string;
   publications?: Publication[];
   items?: NewsItem[];
+  cards?: CardPageConfig;
 }
 
 interface NewsItem {
   date: string;
   content: string;
+  highlight?: boolean;
 }
 
 type PageData =
@@ -32,6 +34,8 @@ type PageData =
 function processSections(sections: SectionConfig[], locale?: string): SectionConfig[] {
   return sections.map((section: SectionConfig) => {
     switch (section.type) {
+      case 'cards':
+        return { ...section, cards: section.source ? getTomlContent<CardPageConfig>(section.source, locale) || undefined : undefined };
       case 'markdown':
         return {
           ...section,
@@ -45,7 +49,7 @@ function processSections(sections: SectionConfig[], locale?: string): SectionCon
           : allPubs;
         return {
           ...section,
-          publications: filteredPubs.slice(0, section.limit || 5),
+          publications: filteredPubs.sort((a, b) => (a.selectedOrder ?? Number.MAX_SAFE_INTEGER) - (b.selectedOrder ?? Number.MAX_SAFE_INTEGER)).slice(0, section.limit || 5),
         };
       }
       case 'list': {
@@ -99,7 +103,7 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
         }
 
         if (pageConfig.type === 'text') {
-          const textConfig = pageConfig as TextPageConfig;
+          const textConfig = resolveTextPageConfig(pageConfig as TextPageConfig);
           return {
             type: 'text',
             id: item.target,

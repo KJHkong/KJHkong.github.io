@@ -9,7 +9,7 @@ import {
   TextPageConfig,
   CardPageConfig,
 } from '@/types/page';
-import { useLocaleStore } from '@/lib/stores/localeStore';
+import { useCurrentLocale } from '@/components/ui/LocaleProvider';
 
 export type DynamicPageLocaleData =
   | { type: 'publication'; config: PublicationPageConfig; publications: Publication[] }
@@ -22,7 +22,7 @@ interface DynamicPageClientProps {
 }
 
 export default function DynamicPageClient({ dataByLocale, defaultLocale }: DynamicPageClientProps) {
-  const locale = useLocaleStore((state) => state.locale);
+  const locale = useCurrentLocale();
   const fallback = dataByLocale[defaultLocale] || Object.values(dataByLocale)[0];
   const pageData = dataByLocale[locale] || fallback;
 
@@ -31,7 +31,7 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className={`${pageData.type === 'publication' ? 'max-w-6xl' : 'max-w-4xl'} mx-auto px-4 sm:px-6 lg:px-8 py-12`}>
       {pageData.type === 'publication' && (
         <PublicationsList config={pageData.config} publications={pageData.publications} />
       )}

@@ -1,0 +1,21 @@
+type = "card"
+title = "Education"
+
+[[items]]
+title = "Peking University"
+subtitle = "M.S. in Big Data"
+date = "2027.09 – 2029.06"
+content = "Admitted to the master's program through recommendation without entrance examination."
+
+[[items]]
+title = "Shandong University"
+subtitle = "B.S. in Mathematics and Applied Mathematics"
+date = "2023.09 – 2027.06"
+content = "Rank: 1/79"
+
+[[items]]
+id = "xuejun"
+title = "Hangzhou Xuejun High School"
+subtitle = "Technology elective track"
+date = "2020.09 – 2023.06"
+content = "Recommended admission from junior high school to Hangzhou Xuejun High School (Xixi Main Campus)."

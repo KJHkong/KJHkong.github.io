@@ -2,28 +2,33 @@ type = "about"
 title = "About"
 
 [profile]
-research_interests = [
-  "Computational Physics",
-  "Mathematical Principles",
-  "Proof of Theorems"
-]
+research_interests = ["Multimodal Learning & Post-Training","Generative Models","Agents & Reinforcement Learning","Decision Models"]
 
 [[sections]]
-id = "about"
+id = "biography"
 type = "markdown"
 source = "bio.md"
-title = "About"
+title = "About Me"
 
 [[sections]]
-id = "featured_publications"
+id = "education"
+type = "cards"
+source = "education.toml"
+
+[[sections]]
+id = "selected-publications"
 type = "publications"
 title = "Selected Publications"
 filter = "selected"
-limit = 5
+limit = 3
+
+[[sections]]
+id = "selected-projects"
+type = "cards"
+source = "selected_projects.toml"
 
 [[sections]]
 id = "news"
 type = "list"
 title = "News"
 source = "news.toml"
-

@@ -1,0 +1,24 @@
+type = "card"
+title = "精选项目"
+
+[[items]]
+id = "featured-mineru"
+title = "MinerU-2.5pro"
+subtitle = "上海人工智能实验室"
+content = "参与文档智能、版面分析与 GRPO 奖励设计相关工作。"
+link = "/internships#mineru"
+
+[[items]]
+id = "featured-deepfake-redteam"
+title = "DeepFake Red Team Attacker"
+subtitle = "网易"
+content = "参与换脸、面部编辑、攻击样本生成与检测器评估相关工作。"
+link = "/internships#deepfake-redteam"
+
+[[items]]
+id = "featured-deeptrace"
+title = "DeepTrace"
+subtitle = "网易"
+content = "**项目内容待补充。**"
+link = "/internships#deepfake-detection"
+highlight = true

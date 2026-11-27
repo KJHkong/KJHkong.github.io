@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPageConfig, getMarkdownContent, getBibtexContent } from '@/lib/content';
+import { getPageConfig, getMarkdownContent, getBibtexContent, resolveTextPageConfig } from '@/lib/content';
 import { getConfig } from '@/lib/config';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import DynamicPageClient, { type DynamicPageLocaleData } from '@/components/pages/DynamicPageClient';
@@ -31,7 +31,7 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
   }
 
   if (pageConfig.type === 'text') {
-    const textConfig = pageConfig as TextPageConfig;
+    const textConfig = resolveTextPageConfig(pageConfig as TextPageConfig);
     const content = getMarkdownContent(textConfig.source, locale);
     return {
       type: 'text',
@@ -61,7 +61,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const pageConfig = getPageConfig(slug) as BasePageConfig | null;
+  const locale = getRuntimeI18nConfig(getConfig().i18n).defaultLocale;
+  const pageConfig = getPageConfig(slug, locale) as BasePageConfig | null;
 
   if (!pageConfig) {
     return {};
@@ -77,6 +78,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
 
   const baseConfig = getConfig();
+  if (!baseConfig.navigation.some((nav) => nav.type === 'page' && nav.target === slug && nav.target !== 'about')) notFound();
   const runtimeI18n = getRuntimeI18nConfig(baseConfig.i18n);
   const targetLocales = runtimeI18n.enabled ? runtimeI18n.locales : [runtimeI18n.defaultLocale];
 

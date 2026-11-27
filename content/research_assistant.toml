@@ -1,0 +1,55 @@
+type = "card"
+title = "Projects"
+description = "Projects I contributed to during my university research assistantships."
+compact_projects = true
+
+[[items]]
+id = "zju"
+title = "Zhejiang University · DCD Lab"
+subtitle = "AIGC Research Intern"
+date = "2026.06 – 2026.09"
+content = "Research directions: long video generation, memory routing, and attention profiling."
+tags = ["Long Video Generation", "Memory Routing", "Attention Profiling"]
+
+[[items.projects]]
+id = "layerrecall"
+title = "LayerRecall"
+content = "Co-developed a State-Conditioned Memory Router for bounded-KV long-video generation, retrieving historical K/V into memory-sensitive layers. Conducted attention profiling, layer localization and routing analysis; contributed to CHPM and LongLive / Self-Forcing validation. On **100** multi-shot prompts, MemoBench / MovieBench Overall reached **0.548 / 0.579**, with **0.978** on VBench-Long."
+content_variants = ["Co-developed state-conditioned memory routing and CHPM for long-video generation; conducted attention and sensitive-layer analysis with LongLive / Self-Forcing validation. MemoBench / MovieBench: **0.548 / 0.579**; VBench-Long: **0.978**.", "Developed memory routing and CHPM with attention profiling and cross-backbone evaluation. MemoBench / MovieBench: **0.548 / 0.579**; VBench-Long: **0.978**."]
+compact_content = "Developed memory routing and CHPM; MemoBench / MovieBench: **0.548 / 0.579**, VBench-Long: **0.978**."
+tags = ["Autoregressive Video Generation", "KV Cache", "Attention Profiling", "Conditioned Memory Routing", "CHPM"]
+resources = [{ kind = "pdf", href = "https://arxiv.org/pdf/2608.28460" }, { kind = "code", href = "https://github.com/Yixuan-Ding-ZJU/LayerRecall" }, { kind = "projectPage", href = "https://yixuan-ding-zju.github.io/LayerRecall_Web/" }, { kind = "demo", href = "https://huggingface.co/spaces/Yixuan-Ding-ZJU/layerrecall-long-video" }, { kind = "details", href = "/publications#layerrecall" }]
+
+[[items]]
+id = "sjtu"
+title = "Shanghai Jiao Tong University · Catalysis & AI Lab"
+subtitle = "Scientific Intelligence Research Assistant"
+date = "2025.12 – 2026.03"
+content = "Scientific machine learning, Bayesian optimization, and mixed-variable optimization."
+tags = ["Scientific Machine Learning", "Bayesian Optimization", "Mixed-Variable Optimization"]
+
+[[items.projects]]
+id = "catbox"
+title = "CatBOX"
+content = "Co-designed CatBOX for budget-limited mixed-variable catalysis optimization. Led derivation and implementation of a Cauchy–Gaussian Spectral Mixture Kernel (CSM+GSM), coupled with categorical kernels and trust-region alternating optimization. Synthetic benchmarks showed **>3×** improvement over the best baseline and ~**19×** over random search, with in-silico validation on OCM / SCR / DAr."
+content_variants = ["Led CSM+GSM spectral-kernel development for CatBOX mixed-variable Bayesian optimization, with categorical kernels and trust regions. Synthetic results improved **>3×** over the best baseline and ~**19×** over random search; evaluated OCM / SCR / DAr.", "Led CSM+GSM kernel derivation and implementation for CatBOX mixed-variable optimization, with **>3×** improvement over the best baseline and ~**19×** over random search."]
+compact_content = "Led CSM+GSM kernel development for CatBOX: **>3×** over the best baseline and ~**19×** over random search."
+tags = ["Bayesian Optimization", "Gaussian Process", "Spectral Mixture Kernel", "Hamming Kernel", "AutoGluon"]
+resources = [{ kind = "pdf", href = "https://arxiv.org/pdf/2505.17393.pdf" }, { kind = "code", href = "https://github.com/Lab-of-Catalysis-AI/CatBOX" }]
+
+[[items]]
+id = "sdu"
+title = "Shandong University · CVWC Lab"
+subtitle = "Computer Vision Research Assistant"
+date = "2025.10 – 2026.06"
+content = "Research directions: computer vision, object detection, model compression, and knowledge distillation."
+tags = ["Computer Vision", "Object Detection", "Model Compression", "Knowledge Distillation"]
+
+[[items.projects]]
+id = "gsa-yolo"
+title = "GSA-YOLO"
+content = "Proposed lightweight GSA-YOLO for occluded, cluttered real-time X-ray inspection. Combined Group Lasso soft sparsity, Sparse Structure Selection hard pruning and adaptive knowledge distillation to recover accuracy after compression. mAP50:95 improved by **2.4% / 1.8%** on HiXray / PIDray, with **11.2%** faster inference over the baseline."
+content_variants = ["Proposed GSA-YOLO with Group Lasso soft sparsity, SSS hard pruning and adaptive distillation for real-time X-ray inspection. HiXray / PIDray mAP50:95 improved by **2.4% / 1.8%**, with **11.2%** faster inference.", "Built lightweight GSA-YOLO with Group Lasso, SSS pruning and adaptive distillation. HiXray / PIDray mAP50:95: **+2.4% / +1.8%**; inference: **11.2%** faster."]
+compact_content = "Combined Group Lasso, SSS and distillation: **+2.4% / +1.8%** mAP50:95 on HiXray / PIDray and **11.2%** faster inference."
+tags = ["YOLOv8", "Group Lasso", "Structured Pruning (SSS)", "Adaptive Knowledge Distillation", "TensorRT FP16 Deployment"]
+resources = [{ kind = "pdf", href = "https://www.nature.com/articles/s41598-026-55599-2.pdf" }, { kind = "code", href = "https://github.com/KJHkong/GSA-YOLO" }, { kind = "details", href = "/publications#gsa-yolo" }]

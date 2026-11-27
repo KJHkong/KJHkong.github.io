@@ -1,3 +1,11 @@
 type = "text"
 title = "简历"
+description = "我的简历如下，本页支持在线阅读与 PDF 下载。"
 source = "cv.md"
+
+[pdf]
+path = "/files/CV.pdf"
+
+[notice]
+title = "需要更新简历"
+content = "当前下载文件与下方文字均基于旧版简历，经历、论文信息及作者排序待更新。"

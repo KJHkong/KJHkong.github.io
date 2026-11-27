@@ -1,47 +1,36 @@
 [site]
-title = "Jiale Liu"
-description = "PhD student at the University of Example."
+title = "Jiahao Kong"
+description = "Jiahao Kong · Master's student at Peking University. Multimodal learning and post-training, generative models, agents and reinforcement learning, and decision models."
 favicon = "/favicon.svg"
-last_updated = "November 18, 2025"
+last_updated = "November 15, 2026"
 
 [author]
-name = "Jiale Liu"
-title = "PhD Student"
-institution = "University of Example"
-avatar = "/bio.jpg"
+name = "Jiahao Kong"
+title = "Master's Student"
+institution = "Peking University"
+subtitle = ""
+details = ""
+avatar = "/images/kong-jiahao.jpg"
 
 [social]
-# Contact information (leave blank or delete to hide)
-
-email = "john.doe@example.com"
-location = "City, Country"
-location_url = "https://maps.google.com"
-location_details = [
-  "Room 123, Science Building,",
-  "University Avenue, City, Country"
-]
-google_scholar = "https://scholar.google.com"
-orcid = "https://orcid.org"
-github = "https://github.com"
-linkedin = "https://linkedin.com"
+# Add only verified public contact information. Empty values are hidden.
+email = "jiahao_kong@163.com"
+orcid = "https://orcid.org/0009-0001-5008-2222"
+github = "https://github.com/KJHkong"
+google_scholar = ""
+cv = "/cv"
 
 [features]
-# Show a like button on the about page
-enable_likes = true
-
-# Display all subpages on a single page
+enable_likes = false
 enable_one_page_mode = false
 
 [i18n]
 enabled = true
 locales = ["zh", "en"]
-default_locale = "en"
-# "auto" means the locale will be determined by the browser's language setting, "fixed" means the locale will be fixed to the default locale (but can be switched still, if you want to disable, set "enable=false")
-mode = "auto"
-fixed_locale = "en"
-# If true, PRISM will remember user's language preference in browser's localStorage
+default_locale = "zh"
+mode = "fixed"
+fixed_locale = "zh"
 persist = true
-# Show a language switcher on the top right corner
 switcher = true
 
 [i18n.labels]
@@ -61,22 +50,22 @@ target = "publications"
 href = "/publications"
 
 [[navigation]]
-title = "Teaching"
+title = "Internships"
 type = "page"
-target = "teaching"
-href = "/teaching"
+target = "internships"
+href = "/internships"
+
+[[navigation]]
+title = "Projects"
+type = "page"
+target = "research_assistant"
+href = "/research_assistant"
 
 [[navigation]]
 title = "Awards"
 type = "page"
 target = "awards"
 href = "/awards"
-
-[[navigation]]
-title = "Services"
-type = "page"
-target = "services"
-href = "/services"
 
 [[navigation]]
 title = "CV"

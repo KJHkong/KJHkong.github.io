@@ -1,27 +1,43 @@
 type = "card"
 title = "Awards"
-description = "Honors and awards I have received."
+description = "My academic honors and competition awards."
 
 [[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2025"
-content = "Description of the award."
+id = "academic-honors"
+title = "Academic Honors"
+
+[[items.entries]]
+title = "Undergraduate National Scholarship, academic year 2023–2024"
+date = "2024.12"
+
+[[items.entries]]
+title = "Undergraduate National Scholarship, academic year 2024–2025"
+date = "2025.12"
+
+[[items.entries]]
+title = "First-Class Excellent Student Award, Shandong University"
+date = "2024.11"
+
+[[items.entries]]
+title = "Merit Student, Shandong University"
+date = "2025.11"
 
 [[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2024"
-content = "Description of the award."
+id = "competition-awards"
+title = "Competition Awards"
 
-[[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2023"
-content = "Description of the award."
+[[items.entries]]
+title = "National First Prize · National Undergraduate Electrical Mathematical Modeling Competition"
+date = "2025.07"
 
-[[items]]
-title = "Example Award"
-subtitle = "Organization"
-date = "2022"
-content = "Description of the award."
+[[items.entries]]
+title = "National First Prize · VEX, World Robot Contest Championship"
+date = "2021.09"
+
+[[items.entries]]
+title = "National Second Prize · National Undergraduate Mathematics Competition"
+date = "2024.12"
+
+[[items.entries]]
+title = "National Third Prize · Lanqiao Cup Programming Competition"
+date = "2026.05"

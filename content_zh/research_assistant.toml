@@ -1,0 +1,55 @@
+type = "card"
+title = "项目"
+description = "我在各高校担任科研助理时参与的项目如下。"
+compact_projects = true
+
+[[items]]
+id = "zju"
+title = "浙江大学 · DCD Lab"
+subtitle = "生成式人工智能科研实习生"
+date = "2026.06 – 2026.09"
+content = "研究方向：长视频生成、记忆路由与注意力分析"
+tags = ["Long Video Generation", "Memory Routing", "Attention Profiling"]
+
+[[items.projects]]
+id = "layerrecall"
+title = "LayerRecall"
+content = "面向有限 KV Cache 下的长视频一致性退化，参与提出 State-Conditioned Memory Router，按当前状态检索历史 K/V 并注入记忆敏感层；负责 Attention Profiling、敏感层定位与路由分析，参与 CHPM 设计和跨 LongLive / Self-Forcing 骨干验证。在 **100** 个 multi-shot prompts 上，MemoBench / MovieBench Overall 达 **0.548 / 0.579**，VBench-Long 达 **0.978**。"
+content_variants = ["参与状态条件记忆路由与 CHPM 设计，按当前状态检索历史 K/V 并注入敏感层；负责 Attention Profiling 与路由分析，开展跨 LongLive / Self-Forcing 验证。**100** 个 multi-shot prompts 上，MemoBench / MovieBench 为 **0.548 / 0.579**，VBench-Long 为 **0.978**。", "参与长视频记忆路由与 CHPM，负责注意力及敏感层分析，并开展跨骨干验证；MemoBench / MovieBench 为 **0.548 / 0.579**，VBench-Long 为 **0.978**。"]
+compact_content = "参与记忆路由与 CHPM，负责注意力分析；MemoBench / MovieBench 达 **0.548 / 0.579**，VBench-Long 达 **0.978**。"
+tags = ["Autoregressive Video Generation", "KV Cache", "Attention Profiling", "Conditioned Memory Routing", "CHPM"]
+resources = [{ kind = "pdf", href = "https://arxiv.org/pdf/2608.28460" }, { kind = "code", href = "https://github.com/Yixuan-Ding-ZJU/LayerRecall" }, { kind = "projectPage", href = "https://yixuan-ding-zju.github.io/LayerRecall_Web/" }, { kind = "demo", href = "https://huggingface.co/spaces/Yixuan-Ding-ZJU/layerrecall-long-video" }, { kind = "details", href = "/publications#layerrecall" }]
+
+[[items]]
+id = "sjtu"
+title = "上海交通大学·Catalysis & AI Lab"
+subtitle = "科学智能科研助理"
+date = "2025.12 – 2026.03"
+content = "科学机器学习、贝叶斯优化与混合变量优化"
+tags = ["Scientific Machine Learning", "Bayesian Optimization", "Mixed-Variable Optimization"]
+
+[[items.projects]]
+id = "catbox"
+title = "CatBOX"
+content = "面向有限预算的混合变量催化优化，参与设计 CatBOX，主导 Cauchy–Gaussian Spectral Mixture Kernel（CSM+GSM）推导与实现，结合类别核及信赖域交替优化，同时建模平滑与非平滑响应。在合成基准上，较最优基线平均取得 **3 倍以上**改进，较随机搜索提升约 **19 倍**，并在 OCM / SCR / DAr 的 in-silico 评测中识别高性能配方与反应条件。"
+content_variants = ["参与混合变量贝叶斯优化框架 CatBOX，主导 CSM+GSM 谱混合核推导与实现，结合类别核及信赖域优化建模平滑和非平滑响应；较最优基线平均改进 **3 倍以上**，较随机搜索提升约 **19 倍**，并开展 OCM / SCR / DAr 催化反应评测。", "主导 CSM+GSM 谱混合核推导与实现，参与混合变量贝叶斯优化及催化反应评测；较最优基线平均改进 **3 倍以上**，较随机搜索提升约 **19 倍**。"]
+compact_content = "主导 CSM+GSM 核推导与实现，参与混合变量贝叶斯优化；较最优基线改进 **3 倍以上**，较随机搜索提升约 **19 倍**。"
+tags = ["Bayesian Optimization", "Gaussian Process", "Spectral Mixture Kernel", "Hamming Kernel", "AutoGluon"]
+resources = [{ kind = "pdf", href = "https://arxiv.org/pdf/2505.17393.pdf" }, { kind = "code", href = "https://github.com/Lab-of-Catalysis-AI/CatBOX" }]
+
+[[items]]
+id = "sdu"
+title = "山东大学·CVWC Lab"
+subtitle = "计算机视觉科研助理"
+date = "2025.10 – 2026.06"
+content = "研究方向：计算机视觉、目标检测、模型压缩与知识蒸馏"
+tags = ["Computer Vision", "Object Detection", "Model Compression", "Knowledge Distillation"]
+
+[[items.projects]]
+id = "gsa-yolo"
+title = "GSA-YOLO"
+content = "面向遮挡与复杂背景下的实时 X-ray 安检，提出轻量化 GSA-YOLO，融合 Group Lasso 结构化软稀疏、Sparse Structure Selection 硬剪枝与 Adaptive Knowledge Distillation 自适应蒸馏，实现模型压缩后的精度恢复与推理加速。在 HiXray / PIDray 上，mAP50:95 较基线提升 **2.4% / 1.8%**，推理速度提升 **11.2%**。"
+content_variants = ["提出面向实时 X-ray 安检的 GSA-YOLO，结合 Group Lasso、SSS 剪枝与自适应蒸馏，实现模型压缩、精度恢复和推理加速；HiXray / PIDray 的 mAP50:95 提升 **2.4% / 1.8%**，推理速度提升 **11.2%**。", "提出融合 Group Lasso、SSS 剪枝与自适应蒸馏的 GSA-YOLO，实现轻量化安检；HiXray / PIDray 精度提升 **2.4% / 1.8%**，推理提速 **11.2%**。"]
+compact_content = "提出融合 Group Lasso、SSS 与自适应蒸馏的 GSA-YOLO；HiXray / PIDray 精度提升 **2.4% / 1.8%**，推理提速 **11.2%**。"
+tags = ["YOLOv8", "Group Lasso", "Structured Pruning (SSS)", "Adaptive Knowledge Distillation", "TensorRT FP16 Deployment"]
+resources = [{ kind = "pdf", href = "https://www.nature.com/articles/s41598-026-55599-2.pdf" }, { kind = "code", href = "https://github.com/KJHkong/GSA-YOLO" }, { kind = "details", href = "/publications#gsa-yolo" }]

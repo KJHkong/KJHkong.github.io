@@ -42,3 +42,15 @@ next-env.d.ts
 
 # wrangler
 .wrangler
+
+# Local browser verification tools, screenshots, and reports
+/.qa/
+
+# Original local assets; the website uses the copies under public/.
+/my_photo.jpg
+/paper_representative_image/
+
+# Local mathematical-modeling results and Python caches
+/docs/linear_regression_results/
+__pycache__/
+*.py[cod]

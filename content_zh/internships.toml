@@ -1,0 +1,72 @@
+type = "card"
+title = "实习"
+description = "我的实习经历如下。"
+compact_projects = true
+
+[[items]]
+id = "netease"
+title = "网易智企事业部"
+subtitle = "人工智能算法实习生"
+date = "2026.10 — 至今"
+
+[[items.projects]]
+id = "deepfake-redteam"
+title = "DeepFake Red Team Attacker"
+content = "基于 LangGraph 搭建状态化换脸与条件编辑工作流，结合业务人脸 Source–Target 样本池、Reference Bank 与 CLIP Top-K 检索进行相似配对，以 MMD 分析分布差异。集成多类生成器、静态 LivePortrait 编辑及双路人脸准入校验，通过有效性与 Detector 反馈筛选约 **6,000** 条样本用于微调，使业务测试集 Fake 检出率提升 **2.8%**，并搭建交互式 Demo。"
+content_variants = ["基于 LangGraph 搭建换脸与条件化编辑工作流，以 CLIP 检索匹配 Source–Target 样本池与 Reference Bank，结合 MMD 分布分析及检测器反馈筛选攻击样本；自动生成约 **6,000** 条高质量样本用于模型微调，使业务测试集 Fake 检出率提升 **2.8%**，并搭建交互式 Demo。", "基于 LangGraph 构建换脸与条件编辑流程，以 CLIP 检索匹配 Source–Target 样本池与 Reference Bank，结合 MMD、准入校验及 Detector 反馈筛选约 **6,000** 条样本；用于微调后，业务 Fake 检出率提升 **2.8%**，并提供交互式 Demo。"]
+compact_content = "基于 LangGraph 与 CLIP 检索构建换脸及条件编辑流程，生成约 **6,000** 条样本用于微调，Fake 检出率提升 **2.8%**。"
+tags = ["LangGraph", "CLIP Retrieval", "Reference Bank", "Conditioned Face Editing", "Detector Evaluation"]
+resources = [
+  { kind = "code", href = "https://github.com/KJHkong/DeepFake-Red-Team-Attacker" },
+  { kind = "demo", href = "https://deepfake-redteam-showcase.pages.dev/" }
+]
+
+[[items.projects]]
+id = "deepfake-detection"
+title = "DeepTrace"
+ongoing = true
+content = "面向伪造证据定位与可解释检测，整合 Effort 独立判别、CLIP ViT-L/14 + SVD 与领域 VLM，结合 FakeShield、TCM + SAM 推进像素级定位，并通过注意力差异和跨分支证据核验判断冲突。复用 Source–Target 配对与图像质检差异构建弱监督定位数据，推进 DeepSeek 辅助标注、人工校验及 LoRA / QLoRA SFT，建立检测、定位与解释忠实度联合评测。"
+content_variants = ["面向可解释 DeepFake 检测，整合 CLIP ViT-L/14 + SVD 与领域 VLM，结合 TCM + SAM 开展证据定位与跨分支核验；复用 Source–Target 配对构建弱监督数据，推进 DeepSeek 辅助标注、LoRA / QLoRA SFT 及检测、定位与解释忠实度联合评测。", "整合 CLIP ViT-L/14 + SVD、领域 VLM 与 TCM + SAM，推进伪造证据定位及跨分支核验；复用 Source–Target 配对构建弱监督数据，结合 DeepSeek 辅助标注、人工校验和 LoRA / QLoRA SFT，完善检测、定位与解释忠实度评测。"]
+compact_content = "结合 CLIP+SVD 与 TCM+SAM 推进伪造证据定位，利用弱监督配对和 LoRA/QLoRA 完善检测、定位与解释评测。"
+tags = ["CLIP ViT-L/14 + SVD", "TCM + SAM", "Source–Target Weak Supervision", "LoRA / QLoRA", "Evidence Localization"]
+
+[[items.projects]]
+id = "deepfake-decision"
+title = "DeepFake Decision Model"
+ongoing = true
+content = "基于 Intern-Decision 2B / 4B 探索 DeepFake 多模态决策模型适配，推进业务结构化样本构建、Decision SFT 与分类评测。计划统一对比通用 VLM、领域 VLM 和专用视觉检测器，研究跨数据集、跨生成器的 OOD 泛化；后续扩展结构化 BBox 输出，复用 Red Team 的 Source–Target 配对及图像差异质检构建弱监督数据，推进分类与区域定位联合评测。"
+content_variants = ["基于 Intern-Decision 2B / 4B 推进 DeepFake 决策模型适配、结构化样本构建与 Decision SFT；计划统一对比通用 VLM、领域 VLM 和视觉检测器，评测跨数据集与生成器的 OOD 泛化，并探索利用 Source–Target 弱监督配对开展 BBox 输出与联合定位评测。", "基于 Intern-Decision 2B / 4B 推进结构化业务数据、Decision SFT 与分类评测；计划统一对比通用 VLM、领域 VLM 和视觉检测器，研究 OOD 泛化，并复用 Source–Target 配对探索 BBox 输出及分类、定位联合评测。"]
+compact_content = "基于 Intern-Decision 2B/4B 推进领域 Decision SFT；后续评测 OOD 泛化，并探索 BBox 定位。"
+tags = ["Decision Model", "Post Training（SFT/DPO）", "TP、FSDP", "OOD Evaluation", "BBox Localization"]
+
+[[items]]
+id = "shanghai-ai-lab"
+title = "上海人工智能实验室"
+subtitle = "多模态大模型算法实习生"
+date = "2026.03 — 2026.06"
+
+[[items.projects]]
+id = "mineru"
+title = "MinerU2.5-Pro"
+content = "参与 DDAS 多样性与难度采样、CMCV 跨模型验证及 Judge-and-Refine 质量修正，支撑 **3.9M Hard-sample SFT / 192K GRPO** 样本。基于 MinerU-SWIFT 开展 SFT→GRPO 实验与 Rollout 分析，通过 MGAM 处理版面元素粒度偏差；结合 Layout Category IoU、Edit Distance、CDM、TEDS 开展多任务评测与奖励设计，OmniDocBench v1.6 Full 达 **95.69**，较同架构基线提升 **2.71** 分。"
+content_variants = ["参与 DDAS / CMCV 数据筛选与 Judge-and-Refine 质量修正，支撑 **3.9M Hard-sample SFT / 192K GRPO** 样本；基于 MinerU-SWIFT 开展 SFT→GRPO 实验、Rollout 分析与 MGAM 匹配，以 IoU / Edit Distance / CDM / TEDS 设计奖励；OmniDocBench v1.6 Full 达 **95.69** 分，较同架构基线提升 **2.71** 分。", "参与 DDAS / CMCV 数据筛选与质量修正，支撑 **3.9M SFT / 192K GRPO** 样本；基于 MinerU-SWIFT 开展 SFT→GRPO、Rollout 分析、MGAM 匹配及多任务奖励设计。OmniDocBench v1.6 Full 达 **95.69**，提升 **2.71** 分。"]
+compact_content = "参与数据筛选与 SFT→GRPO 后训练，支撑 **3.9M / 192K** 训练样本；OmniDocBench v1.6 Full 达 **95.69**，提升 **2.71** 分。"
+tags = ["MS-SWIFT", "Post Training（SFT / GRPO）", "DDAS / CMCV", "MGAM", "OmniDocBench"]
+resources = [
+  { kind = "pdf", href = "https://arxiv.org/pdf/2604.04771" },
+  { kind = "code", href = "https://github.com/opendatalab/MinerU" },
+  { kind = "huggingFace", href = "https://huggingface.co/opendatalab/MinerU2.5-Pro-2604-1.2B" }
+]
+
+[[items.projects]]
+id = "citevqa"
+title = "CiteVQA"
+content = "参与跨文档语义检索、证据包提取与模板蒸馏式 QA 合成，构建可回答性、闭卷过滤和 BBox 遮挡等自动质检流程。通过教师工具轨迹蒸馏与 BBox IoU 拒绝采样生成 SFT 数据，**3K** 合成样本在 FinRAGBench-V / ViDoRe V3 上取得与 **5K** 人工数据相近的表现；构建 **711 PDF / 1,897 QA** 基准，以 SAA 和细粒度 LLM-as-Judge 评测 **20** 款 MLLM，揭示答案正确但引用区域错误的证据归因幻觉。"
+content_variants = ["参与跨文档检索、证据提取、QA 合成与多阶段质检 Pipeline；通过轨迹蒸馏与 BBox IoU 拒绝采样构建 SFT 数据，**3K** 合成样本在 FinRAGBench-V / ViDoRe V3 上达到与 **5K** 人工数据相近的表现。构建 **711 PDF / 1,897 QA** 基准，以 SAA 评测 **20** 款 MLLM，揭示证据归因幻觉。", "参与跨文档检索、QA 合成与证据质检，通过轨迹蒸馏和 BBox IoU 拒绝采样构建 SFT 数据，**3K** 合成样本达到与 **5K** 人工数据相近的表现；构建 **711 PDF / 1,897 QA** 基准，以 SAA 评测 **20** 款 MLLM，揭示证据归因幻觉。"]
+compact_content = "参与跨文档数据 Pipeline 与证据质检，构建 **711 PDF / 1,897 QA** 基准；以 SAA 评测 **20** 款 MLLM，揭示证据归因幻觉。"
+tags = ["Agentic Data Pipeline", "Dense Retrieval", "Evidence Grounding", "Trajectory Distillation", "LLM-as-Judge"]
+resources = [
+  { kind = "pdf", href = "https://arxiv.org/pdf/2605.12882" },
+  { kind = "code", href = "https://github.com/opendatalab/CiteVQA" },
+  { kind = "details", href = "/publications#citevqa" }
+]

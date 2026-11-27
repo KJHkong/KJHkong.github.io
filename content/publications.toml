@@ -1,4 +1,6 @@
 type = "publication"
 title = "Publications"
-description = "A collection of my research work."
+description = "A list of my research work."
 source = "publications.bib"
+order = ["layerrecall", "gsa-yolo", "citevqa", "tailprop"]
+group_by_status = false

@@ -1,5 +1,7 @@
-I am a PhD student at the School of Science, University of Example, advised by [Prof. Advisor One](https://example.com) and [Dr. Advisor Two](https://example.com).
+I am a master's student in Big Data at the School of Mathematical Sciences, *Peking University*, **advised by [advisor to be added]**. Previously, I received a B.S. in Mathematics and Applied Mathematics from Shandong University.
 
-Prior to this, I obtained a BSc degree with First Class Honours in Natural Science from the University of Example.
+My research interests span multimodal learning and post-training, generative models, agents and reinforcement learning, and decision models.
 
-My current research focuses on investigating the mathematical principles of natural philosophy.
+I have worked as a research assistant at *Zhejiang University* (DCD Lab) and *Shanghai Jiao Tong University* (Catalysis & AI Lab).
+
+I interned at the Data Platform Center of *Shanghai Artificial Intelligence Laboratory* as a Multimodal Large Model Algorithm Intern, before joining *NetEase*'s Intelligence Enterprise Division as an AI Algorithm Intern.

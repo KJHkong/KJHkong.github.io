@@ -1,0 +1,24 @@
+type = "card"
+title = "Selected Projects"
+
+[[items]]
+id = "featured-mineru"
+title = "MinerU-2.5pro"
+subtitle = "Shanghai Artificial Intelligence Laboratory"
+content = "Document intelligence, layout analysis, and GRPO reward design."
+link = "/internships#mineru"
+
+[[items]]
+id = "featured-deepfake-redteam"
+title = "DeepFake Red Team Attacker"
+subtitle = "NetEase"
+content = "Face swapping, face editing, attack generation, and detector evaluation."
+link = "/internships#deepfake-redteam"
+
+[[items]]
+id = "featured-deeptrace"
+title = "DeepTrace"
+subtitle = "NetEase"
+content = "**Project details to be added.**"
+link = "/internships#deepfake-detection"
+highlight = true

@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import LanguageToggle from '@/components/ui/LanguageToggle';
 import type { SiteConfig } from '@/lib/config';
-import { useLocaleStore } from '@/lib/stores/localeStore';
+import { useCurrentLocale } from '@/components/ui/LocaleProvider';
 import { useMessages } from '@/lib/i18n/useMessages';
 import type { I18nRuntimeConfig } from '@/types/i18n';
 
@@ -32,7 +32,7 @@ export default function Navigation({
   siteTitleByLocale,
 }: NavigationProps) {
   const pathname = usePathname();
-  const locale = useLocaleStore((state) => state.locale);
+  const locale = useCurrentLocale();
   const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState('');
   const [hoveredHref, setHoveredHref] = useState<string | null>(null);
@@ -181,14 +181,14 @@ export default function Navigation({
                 >
                   <Link
                     href="/"
-                    className="text-xl lg:text-2xl font-serif font-semibold text-primary hover:text-accent transition-colors duration-200"
+                    className="text-base sm:text-xl lg:text-2xl font-serif font-semibold text-primary hover:text-accent transition-colors duration-200"
                   >
                     {effectiveSiteTitle}
                   </Link>
                 </motion.div>
 
                 <div className="hidden lg:block">
-                  <div className="ml-10 flex items-center space-x-3">
+                  <div className="ml-6 flex items-center space-x-2">
                     <div
                       ref={navContainerRef}
                       className="relative flex items-baseline space-x-1"
@@ -247,7 +247,7 @@ export default function Navigation({
                   </div>
                 </div>
 
-                <div className="lg:hidden flex items-center space-x-2">
+                <div className="lg:hidden flex items-center gap-1 sm:gap-2">
                   <LanguageToggle i18n={i18n} />
                   <ThemeToggle />
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-primary hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent transition-colors duration-200">

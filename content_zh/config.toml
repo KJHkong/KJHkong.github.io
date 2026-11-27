@@ -1,19 +1,23 @@
 [site]
-title = "刘嘉乐"
-description = "某某大学博士生个人主页。"
-last_updated = "2025年11月18日"
+title = "孔嘉浩"
+description = "孔嘉浩的个人学术主页。北京大学数学科学学院大数据专业硕士生，关注多模态学习与后训练、生成式模型、智能体与强化学习及决策模型。"
+favicon = "/favicon.svg"
+last_updated = "2026年11月15日"
 
 [author]
-name = "刘嘉乐"
-title = "博士生"
-institution = "某某大学"
+name = "孔嘉浩"
+title = "硕士研究生"
+institution = "北京大学"
+subtitle = ""
+details = ""
+avatar = "/images/kong-jiahao.jpg"
 
 [social]
-location = "城市，国家"
-location_details = [
-  "理科楼 123 室，",
-  "大学路，城市，国家"
-]
+email = "jiahao_kong@163.com"
+orcid = "https://orcid.org/0009-0001-5008-2222"
+github = "https://github.com/KJHkong"
+google_scholar = ""
+cv = "/cv"
 
 [[navigation]]
 title = "关于我"
@@ -28,22 +32,22 @@ target = "publications"
 href = "/publications"
 
 [[navigation]]
-title = "教学"
+title = "实习"
 type = "page"
-target = "teaching"
-href = "/teaching"
+target = "internships"
+href = "/internships"
+
+[[navigation]]
+title = "项目"
+type = "page"
+target = "research_assistant"
+href = "/research_assistant"
 
 [[navigation]]
 title = "奖项"
 type = "page"
 target = "awards"
 href = "/awards"
-
-[[navigation]]
-title = "服务"
-type = "page"
-target = "services"
-href = "/services"
 
 [[navigation]]
 title = "简历"

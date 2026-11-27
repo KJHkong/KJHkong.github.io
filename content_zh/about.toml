@@ -2,24 +2,30 @@ type = "about"
 title = "关于我"
 
 [profile]
-research_interests = [
-  "计算物理",
-  "数学原理",
-  "定理证明"
-]
+research_interests = ["多模态学习与后训练","生成式模型","智能体与强化学习","决策模型"]
 
 [[sections]]
-id = "about"
+id = "biography"
 type = "markdown"
 source = "bio.md"
 title = "关于我"
 
 [[sections]]
-id = "featured_publications"
+id = "education"
+type = "cards"
+source = "education.toml"
+
+[[sections]]
+id = "selected-publications"
 type = "publications"
 title = "精选论文"
 filter = "selected"
-limit = 5
+limit = 3
+
+[[sections]]
+id = "selected-projects"
+type = "cards"
+source = "selected_projects.toml"
 
 [[sections]]
 id = "news"

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { TextPageConfig } from '@/types/page';
+import PdfDownload from './PdfDownload';
 
 interface TextPageProps {
     config: TextPageConfig;
@@ -24,16 +25,23 @@ export default function TextPage({ config, content, embedded = false }: TextPage
                     {config.description}
                 </p>
             )}
-            <div className="text-neutral-700 dark:text-neutral-600 leading-relaxed">
+            {config.pdf && <PdfDownload pdf={config.pdf} />}
+            {config.notice && (
+                <aside role="note" data-review-highlight className="mb-8 rounded-lg border-l-4 border-accent bg-accent/20 px-4 py-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-600">
+                    <p className="font-semibold text-primary">{config.notice.title}</p>
+                    {config.notice.content && <p className="mt-1">{config.notice.content}</p>}
+                </aside>
+            )}
+            <div data-cv-text={config.pdf ? '' : undefined} className="text-neutral-700 dark:text-neutral-600 leading-relaxed break-words">
                 <ReactMarkdown
                     components={{
                         h1: ({ children }) => <h1 className="text-3xl font-serif font-bold text-primary mt-8 mb-4">{children}</h1>,
-                        h2: ({ children }) => <h2 className="text-2xl font-serif font-bold text-primary mt-8 mb-4 border-b border-neutral-200 dark:border-neutral-800 pb-2">{children}</h2>,
-                        h3: ({ children }) => <h3 className="text-xl font-semibold text-primary mt-6 mb-3">{children}</h3>,
+                        h2: ({ children }) => <h2 className="text-2xl font-serif font-bold text-primary mt-10 mb-5 border-b border-neutral-200 pb-3">{children}</h2>,
+                        h3: ({ children }) => <h3 className="text-xl font-semibold text-primary mt-7 mb-3">{children}</h3>,
                         p: ({ children }) => <p className="mb-4 last:mb-0">{children}</p>,
-                        ul: ({ children }) => <ul className="list-disc list-inside mb-4 space-y-1 ml-4">{children}</ul>,
-                        ol: ({ children }) => <ol className="list-decimal list-inside mb-4 space-y-1 ml-4">{children}</ol>,
-                        li: ({ children }) => <li className="mb-1">{children}</li>,
+                        ul: ({ children }) => <ul className="list-disc list-outside mb-5 space-y-2 pl-6">{children}</ul>,
+                        ol: ({ children }) => <ol className="list-decimal list-outside mb-5 space-y-2 pl-6">{children}</ol>,
+                        li: ({ children }) => <li>{children}</li>,
                         a: ({ ...props }) => (
                             <a
                                 {...props}

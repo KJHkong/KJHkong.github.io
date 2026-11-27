@@ -1,7 +1,33 @@
 [[news]]
-date = "2025-11"
-content = "我们的工作被顶级期刊接收了 🎉"
+date = "2026-12"
+content = "多模态理解与评测方向论文被 ICLR 2027 接收！🎉"
+highlight = true
 
 [[news]]
-date = "2025-09"
-content = "在某某大学开始博士学习"
+date = "2026-11"
+content = "视频生成方向论文被 AAAI 2027 接收！🎉"
+highlight = true
+
+[[news]]
+date = "2026-10"
+content = "前往网易智企事业部实习，担任人工智能算法实习生。"
+
+[[news]]
+date = "2026-09"
+content = "推免至北京大学数学科学学院大数据专硕！🎉"
+
+[[news]]
+date = "2026-06"
+content = "担任浙江大学 DCD Lab 科研助理，导师为杨易（IEEE Fellow）。"
+
+[[news]]
+date = "2026-05"
+content = "第一作者的论文被 Scientific Reports 正式接收！🎉"
+
+[[news]]
+date = "2026-03"
+content = "前往上海人工智能实验室数据平台中心实习，担任多模态大模型算法实习生。"
+
+[[news]]
+date = "2026-01"
+content = "担任上海交通大学 Catalysis & AI Lab 科研助理，导师为贺玉莲。"

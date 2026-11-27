@@ -43,8 +43,8 @@ export default function About({ content, title }: AboutProps) {
                                 {children}
                             </blockquote>
                         ),
-                        strong: ({ children }) => <strong className="font-semibold text-primary">{children}</strong>,
-                        em: ({ children }) => <em className="italic text-neutral-600 dark:text-neutral-500">{children}</em>,
+                        strong: ({ children }) => <strong data-review-highlight className="font-semibold text-primary bg-accent/20 px-1 py-0.5 rounded decoration-accent">{children}</strong>,
+                        em: ({ children }) => <em className="not-italic font-semibold text-accent">{children}</em>,
                     }}
                 >
                     {content}
